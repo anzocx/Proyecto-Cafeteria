@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Panel de gestión | Hearth &amp; Bean</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600;700&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="assets/css/styles.css" />
+	</head>
+	<body data-page="dashboard" class="admin-page">
+		<div class="app-shell">
+			<aside class="sidebar" id="sideMenu">
+				<a class="sidebar-brand" href="index.html">
+					<span class="brand-mark">H</span>
+					<span>
+						<strong>Hearth &amp; Bean</strong>
+						<small>Administración</small>
+					</span>
+				</a>
+				<nav class="nav-menu" aria-label="Menú principal">
+					<a class="nav-item" href="index.html"
+						><span aria-hidden="true">⌂</span><strong>Ver cafetería</strong></a
+					>
+					<a class="nav-item" href="registro.html"
+						><span aria-hidden="true">＋</span><strong>Registro cliente</strong></a
+					>
+					<a class="nav-item active" href="dashboard.html"
+						><span aria-hidden="true">▦</span><strong>Panel general</strong></a
+					>
+					<a class="nav-item" href="crud.html"
+						><span aria-hidden="true">☕</span><strong>Menú y productos</strong></a
+					>
+					<a class="nav-item" href="sistema_diseno.html"
+						><span aria-hidden="true">◫</span><strong>Sistema de diseño</strong></a
+					>
+				</nav>
+				<div class="sidebar-footer">
+					<small>Sesión activa</small>
+					<strong id="sidebarUserName">Administrador</strong>
+				</div>
+			</aside>
+
+			<main class="main-panel">
+				<header class="topbar">
+					<button
+						class="menu-toggle"
+						id="menuToggle"
+						type="button"
+						aria-label="Abrir menú"
+						aria-controls="sideMenu"
+						aria-expanded="false"
+					>
+						☰
+					</button>
+					<div>
+						<p class="eyebrow">Hearth &amp; Bean · Operaciones</p>
+						<h1>Panel general</h1>
+					</div>
+					<div class="topbar-actions">
+						<div class="user-pill">
+							<span class="avatar" id="profileInitials" aria-hidden="true">HB</span>
+							<span>
+								<strong id="profileName">Administrador</strong>
+								<small id="profileRole">Equipo de cafetería</small>
+							</span>
+						</div>
+						<button class="btn btn-outline btn-compact" id="logoutButton" type="button">
+							Cerrar sesión
+						</button>
+					</div>
+				</header>
+
+				<section class="kpi-grid" aria-label="Indicadores de la cafetería">
+					<article class="kpi-card">
+						<span class="kpi-icon" aria-hidden="true">▤</span>
+						<div class="kpi-label">Pedidos registrados</div>
+						<div class="kpi-value">
+							<strong id="metricOrders">0</strong
+							><span class="kpi-note">Pedidos</span>
+						</div>
+					</article>
+					<article class="kpi-card">
+						<span class="kpi-icon" aria-hidden="true">$</span>
+						<div class="kpi-label">Ventas registradas</div>
+						<div class="kpi-value">
+							<strong id="metricSales">$0</strong
+							><span class="kpi-note">Total local</span>
+						</div>
+					</article>
+					<article class="kpi-card">
+						<span class="kpi-icon" aria-hidden="true">☕</span>
+						<div class="kpi-label">Productos disponibles</div>
+						<div class="kpi-value">
+							<strong id="metricProducts">0</strong
+							><span class="kpi-note">En el menú</span>
+						</div>
+					</article>
+					<article class="kpi-card">
+						<span class="kpi-icon" aria-hidden="true">♙</span>
+						<div class="kpi-label">Clientes registrados</div>
+						<div class="kpi-value">
+							<strong id="metricCustomers">0</strong
+							><span class="kpi-note">Cuentas</span>
+						</div>
+					</article>
+				</section>
+
+				<section class="summary-grid">
+					<article class="panel-card">
+						<div class="panel-heading">
+							<div>
+								<p class="eyebrow">Actividad</p>
+								<h2>Ritmo de pedidos</h2>
+							</div>
+							<span class="badge badge-live">Ventas últimos 7 días</span>
+						</div>
+						<div id="salesChart" class="chart-bars" aria-label="Ventas diarias en los últimos siete días"></div>
+					</article>
+					<article class="panel-card">
+						<p class="eyebrow">Acceso rápido</p>
+						<h2>Administra tu carta</h2>
+						<p class="panel-copy">
+							Actualiza precios, disponibilidad y descripciones de los productos que
+							ofrecemos.
+						</p>
+						<a class="btn btn-coffee" href="crud.html"
+							>Gestionar productos <span aria-hidden="true">→</span></a
+						>
+					</article>
+				</section>
+
+				<section class="data-grid" aria-label="Inventario y ventas">
+					<article class="panel-card">
+						<div class="panel-heading">
+							<div>
+								<p class="eyebrow">Inventario</p>
+								<h2>Control de stock</h2>
+							</div>
+							<span class="badge badge-alert"><strong id="lowStockCount">0</strong> bajo stock</span>
+						</div>
+						<div class="data-table-wrap compact-table">
+							<table class="data-table">
+								<thead>
+									<tr>
+										<th>Producto</th>
+										<th>Categoría</th>
+										<th>Stock</th>
+										<th>Mínimo</th>
+										<th>Estatus</th>
+									</tr>
+								</thead>
+								<tbody id="inventoryTableBody"></tbody>
+							</table>
+						</div>
+					</article>
+
+					<article class="panel-card">
+						<div class="panel-heading">
+							<div>
+								<p class="eyebrow">Ventas</p>
+								<h2>Últimos pedidos</h2>
+							</div>
+						</div>
+						<div class="data-table-wrap compact-table">
+							<table class="data-table">
+								<thead>
+									<tr>
+										<th>ID</th>
+										<th>Cliente</th>
+										<th>Unidades</th>
+										<th>Total</th>
+									</tr>
+								</thead>
+								<tbody id="salesTableBody"></tbody>
+							</table>
+						</div>
+					</article>
+				</section>
+
+				<section class="panel-card database-card" aria-label="Base de datos MySQL">
+					<div class="panel-heading">
+						<div>
+							<p class="eyebrow">Base de datos</p>
+							<h2>Tablas de MySQL</h2>
+						</div>
+					</div>
+					<ul class="schema-list">
+						<li><strong>users</strong><span>Cuentas y contraseñas protegidas.</span></li>
+						<li><strong>products + inventory</strong><span>Catálogo, cantidades y niveles mínimos.</span></li>
+						<li><strong>orders + order_items</strong><span>Ventas y detalle histórico de cada pedido.</span></li>
+						<li><strong>inventory_movements</strong><span>Historial de entradas, ajustes y salidas por venta.</span></li>
+					</ul>
+				</section>
+
+				<p class="data-note">
+					Los pedidos, ventas y existencias se consultan desde MySQL en el servidor.
+				</p>
+			</main>
+		</div>
+		<div class="toast-stack" aria-live="polite" aria-atomic="false"></div>
+		<script src="assets/js/script.js?v=20261007-php-mysql" defer></script>
+	</body>
+</html>

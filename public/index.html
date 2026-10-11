@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta
+			name="description"
+			content="Cafetería acogedora con especialidades, repostería y un ambiente cálido para disfrutar cada taza."
+		/>
+		<title>Hearth & Bean</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600;700&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="assets/css/styles.css" />
+	</head>
+	<body data-page="home">
+		<header class="site-header">
+			<div class="container nav-wrapper">
+				<a href="#top" class="brand" aria-label="Inicio Hearth & Bean">
+					<span class="brand-mark">H</span>
+					<span class="brand-text">
+						<strong>Hearth &amp; Bean</strong>
+						<small>Cafetería</small>
+					</span>
+				</a>
+
+				<nav class="main-nav" aria-label="Navegación principal">
+					<a href="#menu">Menú</a>
+					<a href="#nosotros">Nosotros</a>
+					<a href="#ubicacion">Ubicación</a>
+					<a href="#contacto">Contacto</a>
+				</nav>
+
+				<button
+					id="mobileNavToggle"
+					class="mobile-nav-toggle"
+					type="button"
+					aria-label="Abrir navegación"
+					aria-expanded="false"
+				>
+					☰
+				</button>
+
+				<div class="header-actions">
+					<div class="status" aria-label="Abierto ahora">
+						<span class="status-dot" aria-hidden="true"></span>
+						Abierto ahora
+					</div>
+
+					<a id="adminLink" class="admin-link" href="dashboard.html" hidden>Panel</a>
+
+					<button
+						class="cart-button"
+						type="button"
+						aria-label="Abrir carrito"
+						aria-controls="cartDrawer"
+					>
+						<span aria-hidden="true">🛒</span>
+						<span class="cart-count" id="cartCount">0</span>
+					</button>
+
+					<button class="login-button" id="loginButton" type="button">
+						Iniciar sesión
+					</button>
+				</div>
+			</div>
+		</header>
+
+		<main id="top">
+			<section class="hero">
+				<div class="container hero-grid">
+					<div class="hero-copy">
+						<p class="eyebrow">Café de la mañana</p>
+						<h1>Una taza que te acompaña cada momento.</h1>
+						<p>
+							Preparaciones artesanales, repostería recién horneada y un ambiente
+							cálido para crear tus mejores pausas.
+						</p>
+
+						<div class="hero-actions">
+							<a href="#menu" class="primary-button">Explorar menú</a>
+							<button class="secondary-button" type="button">
+								Ver especial del día
+							</button>
+						</div>
+
+						<div class="hero-highlights" aria-label="Indicadores de la cafetería">
+							<div>
+								<strong>4.9/5</strong>
+								Valoración
+							</div>
+							<div>
+								<strong>12k+</strong>
+								Tazas servidas
+							</div>
+							<div>
+								<strong>7:00</strong>
+								A partir de
+							</div>
+						</div>
+					</div>
+
+					<div class="hero-visual" aria-label="Imagen destacada de la cafetería">
+						<div class="hero-photo-frame"></div>
+						<img
+							class="hero-photo"
+							src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=1200&q=80"
+							alt="Personas disfrutando café en una cafetería acogedora"
+						/>
+						<div class="hero-badge">
+							<img
+								src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80"
+								alt="Barista sonriente"
+							/>
+							<div>
+								<strong>Especialista</strong>
+								<span>Barista del día</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="menu-section" id="menu">
+				<div class="container">
+					<div class="section-heading">
+						<p class="eyebrow">Nuestro menú</p>
+						<h2>Preparaciones para cada momento.</h2>
+					</div>
+
+					<div class="filter-bar" aria-label="Filtros del menú">
+						<button
+							class="filter-button active"
+							type="button"
+							data-filter="all"
+							aria-pressed="true"
+						>
+							Todos
+						</button>
+						<button
+							class="filter-button"
+							type="button"
+							data-filter="cafe"
+							aria-pressed="false"
+						>
+							Café de Especialidad
+						</button>
+						<button
+							class="filter-button"
+							type="button"
+							data-filter="frio"
+							aria-pressed="false"
+						>
+							Bebidas Frías
+						</button>
+						<button
+							class="filter-button"
+							type="button"
+							data-filter="reposteria"
+							aria-pressed="false"
+						>
+							Repostería
+						</button>
+					</div>
+
+					<div class="menu-grid" id="productGrid" aria-live="polite"></div>
+				</div>
+			</section>
+
+			<section class="about-section" id="nosotros">
+				<div class="container about-grid">
+					<div class="about-copy">
+						<p class="eyebrow">Sobre nosotros</p>
+						<h3>Un lugar para desacelerar y disfrutar.</h3>
+						<p>
+							En Hearth &amp; Bean buscamos crear pausas con sabor. Desde el grano
+							hasta la taza, cada detalle está pensado para que te sientas en casa.
+						</p>
+						<p>
+							Trabajamos con cafés de origen responsable y recetas de temporada para
+							acompañar tus momentos más cotidianos y especiales.
+						</p>
+
+						<div class="about-stats" aria-label="Estadísticas de la cafetería">
+							<div class="stat-box">
+								<strong>8+</strong>
+								<span>Años en el barrio</span>
+							</div>
+							<div class="stat-box">
+								<strong>24</strong>
+								<span>Preparaciones</span>
+							</div>
+							<div class="stat-box">
+								<strong>100%</strong>
+								<span>Hecho con cariño</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="about-gallery" aria-label="Galería de la cafetería">
+						<div class="gallery-card tall">
+							<img
+								src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=900&q=80"
+								alt="Interior acogedor de la cafetería"
+							/>
+						</div>
+						<div class="gallery-card">
+							<img
+								src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=900&q=80"
+								alt="Mesa de café con postres"
+							/>
+						</div>
+						<div class="gallery-card">
+							<img
+								src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=900&q=80"
+								alt="Café recién servido"
+							/>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="location-section" id="ubicacion">
+				<div class="container location-grid">
+					<div class="location-card">
+						<p class="eyebrow">Encuéntranos</p>
+						<h3>Un rincón cálido en el corazón de la ciudad.</h3>
+						<ul class="location-list">
+							<li>
+								<i>📍</i>
+								<div>
+									<strong>Dirección</strong><br />
+									Calle Sol, 84, Centro Histórico
+								</div>
+							</li>
+							<li>
+								<i>🕒</i>
+								<div>
+									<strong>Horario</strong><br />
+									Lunes a Domingo · 7:00 - 21:00
+								</div>
+							</li>
+							<li>
+								<i>☎️</i>
+								<div>
+									<strong>Contacto</strong><br />
+									+34 611 234 567
+								</div>
+							</li>
+						</ul>
+					</div>
+
+					<div class="location-map" aria-label="Mapa de ubicación">
+						<iframe
+							class="map-frame"
+							src="https://www.google.com/maps?q=Barcelona%20Spain&output=embed"
+							loading="lazy"
+							referrerpolicy="no-referrer-when-downgrade"
+							title="Mapa de ubicación de la cafetería"
+						></iframe>
+					</div>
+				</div>
+			</section>
+
+			<section class="contact-section" id="contacto">
+				<div class="container contact-grid">
+					<div class="contact-card">
+						<p class="eyebrow">Contacto</p>
+						<h3>Queremos escucharte.</h3>
+						<p>
+							Si tienes dudas, sugerencias o quieres reservar un espacio para tu
+							próxima reunión, nos encantaría saber de ti.
+						</p>
+					</div>
+
+					<div class="contact-card">
+						<form id="contactForm" class="contact-form" novalidate>
+							<div class="field">
+								<label for="name">Nombre</label>
+								<input id="name" name="name" type="text" placeholder="Tu nombre" />
+							</div>
+
+							<div class="field">
+								<label for="email">Correo</label>
+								<input
+									id="email"
+									name="email"
+									type="email"
+									placeholder="tu@email.com"
+								/>
+							</div>
+
+							<div class="field">
+								<label for="message">Mensaje</label>
+								<textarea
+									id="message"
+									name="message"
+									placeholder="Cuéntanos en qué podemos ayudarte..."
+								></textarea>
+							</div>
+
+							<button class="contact-submit" type="submit">Enviar mensaje</button>
+							<div id="formSuccess" class="form-success" aria-live="polite"></div>
+						</form>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<footer class="site-footer">
+			<div class="container footer-grid">
+				<div class="footer-brand">
+					<a href="#top" class="brand" aria-label="Inicio Hearth &amp; Bean">
+						<span class="brand-mark">H</span>
+						<span class="brand-text">
+							<strong>Hearth &amp; Bean</strong>
+							<small>Cafetería</small>
+						</span>
+					</a>
+					<p>
+						Espacios cálidos para tomar un café, trabajar o compartir un momento
+						agradable.
+					</p>
+					<div class="social-links" aria-label="Redes sociales">
+						<a href="#" aria-label="Instagram">◎</a>
+						<a href="#" aria-label="Facebook">◌</a>
+						<a href="#" aria-label="X">X</a>
+					</div>
+				</div>
+
+				<div class="footer-column">
+					<h4>Horario</h4>
+					<p>Lunes a domingo</p>
+					<p>7:00 - 21:00</p>
+				</div>
+
+				<div class="footer-column">
+					<h4>Visítanos</h4>
+					<p>Calle Sol, 84</p>
+					<p>Barcelona</p>
+				</div>
+			</div>
+
+			<div class="footer-bottom">
+				© 2026 Hearth &amp; Bean. Todos los derechos reservados.
+			</div>
+		</footer>
+
+		<div class="cart-backdrop" id="cartBackdrop" aria-hidden="true"></div>
+		<aside class="cart-drawer" id="cartDrawer" aria-hidden="true" aria-labelledby="cartTitle">
+			<div class="cart-drawer-header">
+				<div>
+					<p class="eyebrow">Hearth &amp; Bean</p>
+					<h2 id="cartTitle">Tu pedido</h2>
+				</div>
+				<button
+					class="modal-close"
+					id="closeCart"
+					type="button"
+					aria-label="Cerrar carrito"
+				>
+					×
+				</button>
+			</div>
+			<div class="cart-items" id="cartItems"></div>
+			<div class="cart-empty" id="cartEmpty">
+				Tu carrito está vacío. Elige algo rico del menú.
+			</div>
+			<div class="cart-drawer-footer">
+				<div class="cart-total"><span>Total</span><strong id="cartTotal">$0</strong></div>
+				<button id="placeOrder" class="btn btn-coffee btn-block" type="button" disabled>
+					Confirmar pedido
+				</button>
+			</div>
+		</aside>
+
+		<div class="modal" id="loginModal" aria-hidden="true">
+			<div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+				<button class="modal-close" id="closeModal" type="button" aria-label="Cerrar modal">
+					×
+				</button>
+
+				<div class="modal-header">
+					<p>Acceso</p>
+					<h3 id="loginTitle">Inicia sesión</h3>
+				</div>
+
+				<form id="authForm" class="auth-form" novalidate>
+					<div class="field">
+						<label for="authEmail">Usuario o correo</label>
+						<input
+							id="authEmail"
+							name="email"
+							type="email"
+							autocomplete="username"
+							placeholder="tu@correo.com"
+							required
+						/>
+					</div>
+
+					<div class="field">
+						<label for="authPassword">Contraseña</label>
+						<input
+							id="authPassword"
+							name="password"
+							type="password"
+							autocomplete="current-password"
+							placeholder="Escribe tu contraseña"
+							required
+						/>
+					</div>
+
+					<div class="login-options">
+						<a id="forgotPassword" href="#recuperacion">¿Olvidaste tu contraseña?</a>
+					</div>
+
+					<button class="modal-submit" type="submit">Ingresar</button>
+				</form>
+				<p class="auth-register-link">
+					¿Aún no tienes cuenta? <a href="registro.html">Regístrate aquí</a>
+				</p>
+				<p class="demo-note">El acceso de administrador se crea durante la instalación inicial.</p>
+			</div>
+		</div>
+
+		<div class="toast-stack" aria-live="polite" aria-atomic="true"></div>
+
+		<script src="assets/js/script.js?v=20261007-php-mysql" defer></script>
+	</body>
+</html>

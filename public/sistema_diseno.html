@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Sistema de diseño | Hearth &amp; Bean</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600;700&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="assets/css/styles.css" />
+	</head>
+	<body data-page="design" class="admin-page">
+		<main class="design-layout">
+			<header class="design-header">
+				<a class="brand" href="index.html"
+					><span class="brand-mark">H</span
+					><span class="brand-text"
+						><strong>Hearth &amp; Bean</strong><small>Sistema de diseño</small></span
+					></a
+				><a class="btn btn-outline" href="dashboard.html">Volver al panel</a>
+			</header>
+			<section class="design-intro">
+				<p class="eyebrow">Guía visual · ADS-433</p>
+				<h1>Una misma taza, cada detalle en su sitio.</h1>
+				<p>Componentes de la experiencia de cliente y del panel de operaciones.</p>
+			</section>
+
+			<section class="design-grid">
+				<article class="panel-card">
+					<p class="eyebrow">Tipografía</p>
+					<h2>Voces del sistema</h2>
+					<div class="type-sample">
+						<strong>Playfair Display</strong><span>Marca y titulares editoriales</span
+						><strong>Plus Jakarta Sans</strong><span>Contenido de la cafetería</span
+						><strong>Montserrat · Open Sans</strong
+						><span>Interfaz administrativa y tablas</span>
+					</div>
+				</article>
+				<article class="panel-card">
+					<p class="eyebrow">Paleta de la cafetería</p>
+					<h2>Hearth &amp; Bean</h2>
+					<div class="swatch-list">
+						<div class="swatch">
+							<i style="background: #3d2314"></i><strong>Café tostado</strong
+							><small>Texto · #3D2314</small>
+						</div>
+						<div class="swatch">
+							<i style="background: #8a9a86"></i><strong>Salvia</strong
+							><small>Acento · #8A9A86</small>
+						</div>
+						<div class="swatch">
+							<i style="background: #c57f5a"></i><strong>Terracota</strong
+							><small>Color secundario · #C57F5A</small>
+						</div>
+						<div class="swatch">
+							<i style="background: #f9f6f0"></i><strong>Crema</strong
+							><small>Fondo · #F9F6F0</small>
+						</div>
+					</div>
+				</article>
+				<article class="panel-card">
+					<p class="eyebrow">Botones</p>
+					<h2>Estados y acciones</h2>
+					<div class="button-showcase">
+						<button class="btn btn-coffee" type="button">Normal</button
+						><button class="btn btn-coffee demo-hover" type="button">
+							Al pasar el cursor</button
+						><button class="btn btn-coffee demo-focus" type="button">Enfoque</button
+						><button class="btn btn-coffee" type="button" disabled>Deshabilitado</button
+						><button class="btn btn-outline" type="button">Contorno</button
+						><button class="btn btn-danger" type="button">Peligro</button
+						><button class="btn btn-success" type="button">Éxito</button>
+					</div>
+					<div class="icon-demo">
+						<strong>Iconografía</strong><span aria-label="Café">☕</span
+						><span aria-label="Éxito">✓</span><span aria-label="Advertencia">!</span
+						><span aria-label="Cerrar">×</span>
+					</div>
+				</article>
+				<article class="panel-card">
+					<p class="eyebrow">Formularios</p>
+					<h2>Validación y controles</h2>
+					<form id="designForm" class="design-form" novalidate>
+						<div class="field">
+							<label for="demoEmail">Correo</label
+							><input
+								id="demoEmail"
+								type="email"
+								placeholder="cliente@correo.com"
+								required
+							/><small class="field-error" data-error-for="demoEmail"></small>
+						</div>
+						<div class="field">
+							<label for="demoPassword">Contraseña</label
+							><input
+								id="demoPassword"
+								type="password"
+								minlength="8"
+								placeholder="Mínimo 8 caracteres"
+								required
+							/><small class="field-error" data-error-for="demoPassword"></small>
+						</div>
+						<div class="field">
+							<label for="demoRole">Rol</label
+							><select id="demoRole">
+								<option>Cliente</option>
+								<option>Administrador</option>
+							</select>
+						</div>
+						<fieldset class="choice-field">
+							<legend>Preferencias</legend>
+							<label class="check-row"
+								><input type="checkbox" checked /> Recibir novedades</label
+							><label class="check-row"
+								><input type="radio" name="demoType" checked /> Para llevar</label
+							>
+						</fieldset>
+						<div class="field">
+							<label for="demoNote">Nota del pedido</label
+							><textarea id="demoNote" placeholder="Sin azúcar, por favor"></textarea>
+						</div>
+						<div class="field">
+							<label for="disabledInput">Campo deshabilitado</label
+							><input id="disabledInput" value="Solo lectura" disabled />
+						</div>
+						<button class="btn btn-coffee" type="submit">Validar formulario</button>
+					</form>
+				</article>
+				<article class="panel-card">
+					<p class="eyebrow">Mensajes del sistema</p>
+					<h2>Ventanas y notificaciones</h2>
+					<div class="button-showcase">
+						<button id="demoModalSuccess" class="btn btn-success" type="button">
+							Éxito</button
+						><button id="demoModalError" class="btn btn-danger" type="button">
+							Error</button
+						><button id="demoModalConfirm" class="btn btn-outline" type="button">
+							Confirmación</button
+						><button id="demoToast" class="btn btn-coffee" type="button">
+							Aviso · 4 s
+						</button>
+					</div>
+				</article>
+			</section>
+		</main>
+
+		<div id="successDemoModal" class="modal-overlay" aria-hidden="true">
+			<div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="successTitle">
+				<div class="modal-header-row">
+					<h2 id="successTitle">
+						<span class="modal-symbol success-symbol">✓</span> ¡Registro exitoso!
+					</h2>
+					<button class="modal-close" data-close-modal type="button" aria-label="Cerrar">
+						×
+					</button>
+				</div>
+				<p class="confirm-text">Los datos fueron guardados correctamente.</p>
+				<div class="modal-actions">
+					<button class="btn btn-coffee" data-close-modal type="button">Aceptar</button>
+				</div>
+			</div>
+		</div>
+		<div id="errorDemoModal" class="modal-overlay" aria-hidden="true">
+			<div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="errorTitle">
+				<div class="modal-header-row">
+					<h2 id="errorTitle">
+						<span class="modal-symbol error-symbol">!</span> Error al procesar
+					</h2>
+					<button class="modal-close" data-close-modal type="button" aria-label="Cerrar">
+						×
+					</button>
+				</div>
+				<p class="confirm-text">Verifica los campos obligatorios e inténtalo de nuevo.</p>
+				<div class="modal-actions">
+					<button class="btn btn-danger" data-close-modal type="button">Entendido</button>
+				</div>
+			</div>
+		</div>
+		<div id="confirmDemoModal" class="modal-overlay" aria-hidden="true">
+			<div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+				<div class="modal-header-row">
+					<h2 id="confirmTitle">
+						<span class="warning-icon">!</span> Confirmar eliminación
+					</h2>
+					<button class="modal-close" data-close-modal type="button" aria-label="Cerrar">
+						×
+					</button>
+				</div>
+				<p class="confirm-text">
+					¿Está seguro de eliminar este producto? Esta acción no se puede deshacer.
+				</p>
+				<div class="modal-actions">
+					<button class="btn btn-outline" data-close-modal type="button">Cancelar</button
+					><button class="btn btn-danger" data-close-modal type="button">Eliminar</button>
+				</div>
+			</div>
+		</div>
+		<div class="toast-stack" aria-live="polite" aria-atomic="false"></div>
+		<script src="assets/js/script.js?v=20261007-php-mysql" defer></script>
+	</body>
+</html>

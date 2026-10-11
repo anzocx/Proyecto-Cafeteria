@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Menú y productos | Hearth &amp; Bean</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600;700&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="assets/css/styles.css" />
+	</head>
+	<body data-page="crud" class="admin-page">
+		<div class="app-shell">
+			<aside class="sidebar" id="sideMenu">
+				<a class="sidebar-brand" href="index.html"
+					><span class="brand-mark">H</span
+					><span><strong>Hearth &amp; Bean</strong><small>Administración</small></span></a
+				>
+				<nav class="nav-menu" aria-label="Menú principal">
+					<a class="nav-item" href="index.html"
+						><span aria-hidden="true">⌂</span><strong>Ver cafetería</strong></a
+					>
+					<a class="nav-item" href="registro.html"
+						><span aria-hidden="true">＋</span><strong>Registro cliente</strong></a
+					>
+					<a class="nav-item" href="dashboard.html"
+						><span aria-hidden="true">▦</span><strong>Panel general</strong></a
+					>
+					<a class="nav-item active" href="crud.html"
+						><span aria-hidden="true">☕</span><strong>Menú y productos</strong></a
+					>
+					<a class="nav-item" href="sistema_diseno.html"
+						><span aria-hidden="true">◫</span><strong>Sistema de diseño</strong></a
+					>
+				</nav>
+				<div class="sidebar-footer">
+					<small>Sesión activa</small><strong id="sidebarUserName">Administrador</strong>
+				</div>
+			</aside>
+
+			<main class="main-panel">
+				<header class="topbar">
+					<button
+						class="menu-toggle"
+						id="menuToggle"
+						type="button"
+						aria-label="Abrir menú"
+						aria-controls="sideMenu"
+						aria-expanded="false"
+					>
+						☰
+					</button>
+					<div>
+						<p class="eyebrow">Carta de temporada</p>
+						<h1>Menú y productos</h1>
+					</div>
+					<div class="topbar-actions">
+						<div class="user-pill">
+							<span class="avatar" id="profileInitials" aria-hidden="true">HB</span
+							><span
+								><strong id="profileName">Administrador</strong
+								><small id="profileRole">Equipo de cafetería</small></span
+							>
+						</div>
+						<button class="btn btn-outline btn-compact" id="logoutButton" type="button">
+							Cerrar sesión
+						</button>
+					</div>
+				</header>
+
+				<section class="panel-card crud-panel" aria-label="Catálogo de productos">
+					<div class="content-toolbar">
+						<div class="toolbar-group">
+							<label class="sr-only" for="searchInput">Buscar productos</label
+							><input
+								id="searchInput"
+								class="search-box"
+								type="search"
+								placeholder="Buscar en la carta..."
+							/>
+							<label class="sr-only" for="categoryFilter">Filtrar por categoría</label
+							><select id="categoryFilter" class="filter-select">
+								<option value="">Todas las categorías</option>
+								<option value="cafe">Café de especialidad</option>
+								<option value="frio">Bebidas frías</option>
+								<option value="reposteria">Repostería</option>
+							</select>
+							<label class="sr-only" for="availabilityFilter"
+								>Filtrar por disponibilidad</label
+							><select id="availabilityFilter" class="filter-select">
+								<option value="">Todos</option>
+								<option value="Disponible">Disponible</option>
+								<option value="Agotado">Agotado</option>
+							</select>
+						</div>
+						<button id="newRecordBtn" class="btn btn-coffee" type="button">
+							<span aria-hidden="true">＋</span> Nuevo producto
+						</button>
+					</div>
+					<div class="data-table-wrap">
+						<table class="data-table">
+							<thead>
+								<tr>
+									<th>Producto</th>
+									<th>Categoría</th>
+									<th>Precio</th>
+									<th>Stock</th>
+									<th>Disponibilidad</th>
+									<th>Acciones</th>
+								</tr>
+							</thead>
+							<tbody id="tableBody"></tbody>
+						</table>
+					</div>
+					<nav class="pagination" aria-label="Paginación de productos">
+						<span id="paginationInfo" aria-live="polite"
+							>Página 1 de 1 · 0 productos</span
+						>
+						<div class="pagination-actions">
+							<button
+								id="previousPage"
+								class="btn btn-outline btn-compact"
+								type="button"
+								disabled
+							>
+								Anterior</button
+							><button
+								id="nextPage"
+								class="btn btn-outline btn-compact"
+								type="button"
+								disabled
+							>
+								Siguiente
+							</button>
+						</div>
+					</nav>
+				</section>
+			</main>
+		</div>
+
+		<div id="crudModal" class="modal-overlay" aria-hidden="true">
+			<div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+				<div class="modal-header-row">
+					<div>
+						<p class="eyebrow">Carta Hearth &amp; Bean</p>
+						<h2 id="modalTitle">Nuevo producto</h2>
+					</div>
+					<button class="modal-close" type="button" data-close-crud aria-label="Cerrar">
+						×
+					</button>
+				</div>
+				<form id="crudForm" novalidate>
+					<div class="form-grid">
+						<div class="field full">
+							<label for="nameInput">Nombre del producto</label
+							><input
+								id="nameInput"
+								type="text"
+								placeholder="Latte de temporada"
+								required
+							/><small class="field-error" data-error-for="nameInput"></small>
+						</div>
+						<div class="field">
+							<label for="categoryInput">Categoría</label
+							><select id="categoryInput">
+								<option value="cafe">Café de especialidad</option>
+								<option value="frio">Bebidas frías</option>
+								<option value="reposteria">Repostería</option>
+							</select>
+						</div>
+						<div class="field">
+							<label for="priceInput">Precio ($)</label
+							><input
+								id="priceInput"
+								type="number"
+								min="0.01"
+								step="0.01"
+								placeholder="4.50"
+								required
+							/><small class="field-error" data-error-for="priceInput"></small>
+						</div>
+						<div class="field">
+							<label for="stockInput">Existencias actuales</label
+							><input
+								id="stockInput"
+								type="number"
+								min="0"
+								max="2147483647"
+								step="1"
+								placeholder="12"
+								required
+							/><small class="field-error" data-error-for="stockInput"></small>
+						</div>
+						<div class="field">
+							<label for="minimumStockInput">Avisar cuando llegue a</label
+							><input
+								id="minimumStockInput"
+								type="number"
+								min="0"
+								max="2147483647"
+								step="1"
+								placeholder="8"
+								required
+							/><small class="field-error" data-error-for="minimumStockInput"></small>
+						</div>
+						<div class="field full">
+							<label for="descriptionInput">Descripción</label
+							><textarea
+								id="descriptionInput"
+								rows="3"
+								placeholder="Notas, ingredientes y preparación"
+								required
+							></textarea
+							><small class="field-error" data-error-for="descriptionInput"></small>
+						</div>
+						<div class="field full">
+							<label for="imageInput">URL de imagen</label
+							><input id="imageInput" type="url" placeholder="https://..." /><small
+								class="field-error"
+								data-error-for="imageInput"
+							></small>
+						</div>
+					</div>
+					<div class="modal-actions">
+						<button class="btn btn-outline" type="button" data-close-crud>
+							Cancelar</button
+						><button id="submitCrud" class="btn btn-coffee" type="submit">
+							Guardar producto
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+
+		<div id="deleteModal" class="modal-overlay" aria-hidden="true">
+			<div
+				class="modal-box confirm-box"
+				role="dialog"
+				aria-modal="true"
+				aria-labelledby="deleteTitle"
+			>
+				<div class="modal-header-row">
+					<h2 id="deleteTitle">
+						<span class="warning-icon" aria-hidden="true">!</span> 						Confirmar retiro de la carta
+					</h2>
+					<button class="modal-close" type="button" data-close-crud aria-label="Cerrar">
+						×
+					</button>
+				</div>
+				<p class="confirm-text">
+					¿Está seguro de retirar <strong id="deleteProductName">este producto</strong> de la carta?
+					El producto y sus ventas anteriores se conservarán en la base de datos.
+				</p>
+				<div class="modal-actions">
+					<button class="btn btn-outline" type="button" data-close-crud>Cancelar</button
+					><button id="confirmDelete" class="btn btn-danger" type="button">
+						Retirar producto
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="toast-stack" aria-live="polite" aria-atomic="false"></div>
+		<script src="assets/js/script.js?v=20261007-php-mysql" defer></script>
+	</body>
+</html>
